@@ -1,0 +1,73 @@
+<? xml version= "1.0"?>
+<robot name= "description">
+   <link name= "base_link">
+    <visual>
+      <geometry>
+       <box size= "0.39 0.29 0.08"/>
+       </geometry>
+        <material name="grey" >
+       <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+ </link>
+
+
+<link name= "down_box">
+    <visual>
+     <geometry>
+      <box size= "0.29 0.18 0.08"/>
+       </geometry>
+          <material name="grey" >
+          <color rgba="0.5 0.5 0.5 1" />
+       </material>
+     </visual>
+  </link>
+
+
+<joint name="base_to_down_box" type="fixed">
+    <parent link="base_link"/>
+    <child link="down_box"/>
+   <origin xyz="0.105 0 -0.04" rpy="0 0 1.57"/>
+  </joint>
+
+ <link name= "upper_surface">
+    <visual>
+     <geometry>
+      <box size= "0.43 0.43 0.02"/>
+      </geometry>
+        <material name="grey" >
+       <color rgba="0.5 0.5 0.5 1" />
+        <origin xyz="0 0 0.04" rpy="0 0 0"/>
+      </material>
+    </visual>
+ </link>
+
+<joint name="base_to_upper_surface" type="fixed">
+    <parent link="base_link"/>
+    <child link="upper_surface"/>
+   <origin xyz="0 0 0.04" rpy="0 0 0"/>
+  </joint>
+
+ <link name= "front_surface">
+    <visual>
+     <geometry>
+      <box size= "0.29 0.02 0.14"/>
+      </geometry>
+        <material name="grey" >
+       <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+ </link>
+
+
+
+<joint name="base_to_front_surface" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_surface"/>
+   <origin xyz="0.205 0 -0.04" rpy="0 0 1.57"/>
+  </joint>
+
+
+</robot>
+
+

@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_description">
+
+<xacro:macro name="box" params="prefix size xyz rpy mass">
+    <link name="${prefix}_box">
+        <visual>
+            <geometry>
+                 <box size="${size}"
+            </geometry>
+	    <material name="grey" >
+             	 <color rgba="0.5 0.5 0.5 1" />
+            </material>
+	</visual>
+	<collision>
+            <origin xyz="${xyz}"  rpy="${rpy}" />
+            <geometry>
+                 <box size="${length} ${width} ${height}"/>
+        </geometry>
+        </collision>
+<!--    <inertial>
+         <origin xyz="0 0 0" />
+         <xacro:default_inertial mass=${mass}   />
+    </inertial> -->
+    </link>
+</xacro:macro>
+
+
+<xacro:macro name="joint" params="type child xyz rpy">
+   <joint name=" base_box__to_${child}_joint" type= "${type}" >
+   <parent link="base box"
+   <child link="${child}"/>
+   <origin xyz="${xyz}" rpy="${rpy}" />
+   </joint>
+</xacro:macro>
+
+<!--Box_Links -->
+
+<xacro:box prefix="base" size="0.39 0.29 0.08" xyz="0 0 0" rpy="0 0 0" mass="10" />
+<xacro:box prefix="down" size="0.18 0.29 0.06" xyz="0 0 0" rpy="0 0 0" mass="10" />
+<xacro:box prefix="upper_surface" size="0.43 0.43 0.02" xyz="0 0 0" rpy="0 0 0" mass="10" />
+<xacro:box prefix="front_surface" size="0.02 0.29 0.14" xyz="0 0 0" rpy="0 0 0" mass="10" />
+<xacro:box prefix="back_surface" size="0.02 0.43 0.08" xyz="0 0 0" rpy="0 0 0" mass="10" />
+
+<!-- Box_joints -->
+
+<xacro:box type="fixed" child="down_box" xyz="0.105 0 -0.07" rpy="0 0 0"/>
+<xacro:box type="fixed" child="upper_surface_box" xyz="0 0 0.04" rpy="0 0 0"/>
+<xacro:box type="fixed" child="front_surface_box" xyz="0.205 0 -0.03" rpy="0 0 0"/>
+<xacro:box type="fixed" child="back_surface " xyz="-0.205 0 -0.01" rpy="0 0 0"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link name= "base_link">
+<visual>
+ <geometry>
+	 <box size="${base_link_length} ${base_link_width} ${base_link_height}"/>
+ </geometry>
+ <material name="grey" >
+	 <color rgba="0.5 0.5 0.5 1" />
+ </material>
+    </visual>
+    <collision>
+         <origin xyz="0 0 0" rpy="0 0 0" />
+         <geometry>
+                 <box size="${base_link_length} ${base_link_width} ${base_link_height}"/>
+         </geometry>
+    </collision>
+<!--    <inertial>
+         <origin xyz="0 0 0" />
+         <xacro:default_inertial mass="10"/>
+    </inertial> -->
+    </link>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_description">
+
+<!--<xacro:macro name="default_inertial" params="mass">
+         <inertial>
+                 <mass value="${mass}" />
+                 <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                          iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        </xacro:macro>-->
+
+
+
+
+ <xacro:property name="base_link_length" value="0.39"/>
+ <xacro:property name="base_link_width" value="0.29"/>
+ <xacro:property name="base_link_height" value="0.08"/>
+
+
+ <link name= "base_link">
+    <visual>
+         <geometry>
+                 <box size="${base_link_length} ${base_link_width} ${base_link_height}"/>
+         </geometry>
+         <material name="grey" >
+                 <color rgba="0.5 0.5 0.5 1" />
+         </material>
+    </visual>
+    <collision>
+         <origin xyz="0 0 0" rpy="0 0 0" />
+         <geometry>
+                 <box size="${base_link_length} ${base_link_width} ${base_link_height}"/>
+         </geometry>
+    </collision>
+<!--    <inertial>
+         <origin xyz="0 0 0" />
+         <xacro:default_inertial mass="10"/>
+    </inertial> -->
+    </link>
+
+
+</robot>
+~         
